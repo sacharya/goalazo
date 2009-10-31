@@ -1,8 +1,9 @@
+.amateras
 .DS_Store
 .classpath
 .project
 .git
 .settings
-eclipse
-test-result
-tmp
+eclipse/*
+test-result/*
+tmp/*
