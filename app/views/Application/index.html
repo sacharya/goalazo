@@ -1,42 +1,37 @@
 #{extends 'main.html' /}
 #{set title:'Home' /}
-
-<h1>First Page</h1>
-
 #{if posts.size() > 0}
-	<div class="posts">
-		<h3>Most Recent Posts</h3>
-		
-		#{list items:posts, as: 'post'}
-			<div class="post">
-				<h2 class="post-title">
-					<a href="${post.id}">${post.title}</a>
-				</h2>
-				
-				<div class="post=metadata">
-					<span class="post-author">
-						by ${post.user.displayName}
-					</span>
-					
-					<span class="post-date">
-						${post.createdDate.format('dd MMM yy')}
-					</span>
-					
-					<div class="post-comments">
-						 
-						#{if post.comments.size() > 0}
-							${post.comments.size()} Comments
-						#{/if}
-						#{else}
-							No Comment
-						#{/else}
-						
-						#{if post.comments}
-							-latest by ${post.comments[0].user.displayName}
-						#{/if}
-					</div>
-				</div>
-			</div>
-		#{/list}
-	</div>
+	<div class="older-posts">    
+    	<h3>Recent Posts<span class="from"></span></h3>
+        
+        #{list items:posts, as:'post'}
+        	<div class="post">
+            	<h2 class="post-title">
+                	<a href="#">${post.title}</a>
+                </h2>
+                <div class="post-metadata">
+                	<span class="post-author">
+                    	by ${post.user.displayName}
+                    </span>
+                    <span class="post-date">
+                    	${post.createdDate.format('dd MMM yy')}
+                    </span>
+                    <div class="post-comments">
+                    	${post.comments.size() ?: 'no'} 
+                        comment${post.comments.size().pluralize()}
+                        #{if post.comments}
+                        	- latest by ${post.comments[0].author}
+                        #{/if}
+                    </div>
+                </div>
+            </div>
+        #{/list}
+    </div>
+         
 #{/if}
+ 
+#{else}
+    <div class="empty">
+        There is currently nothing to read here.
+    </div>
+#{/else}
