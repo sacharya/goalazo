@@ -1,9 +1,0 @@
-30 Oct 2009 21:07:09,992 INFO  ~ Starting /Users/sudarshanacharya/Documents/Mylabs/play/goalazo
-30 Oct 2009 21:07:10,001 INFO  ~ Module test-runner is available (/usr/java/play-1.0/modules/test-runner)
-30 Oct 2009 21:07:10,101 INFO  ~ 
-30 Oct 2009 21:07:10,102 INFO  ~ Go to http://localhost:9000/@tests to run the tests
-30 Oct 2009 21:07:10,102 INFO  ~ 
-30 Oct 2009 21:07:10,102 WARN  ~ You're running Play! in DEV mode
-30 Oct 2009 21:07:10,211 INFO  ~ Listening for HTTP on port 9000 (Waiting a first request to start) ...
-30 Oct 2009 21:07:36,611 INFO  ~ Connected to jdbc:hsqldb:mem:playembed
-30 Oct 2009 21:07:37,309 INFO  ~ Application 'goalazo' is now started !
