@@ -17,7 +17,7 @@
             </div>
             <ul id="tools">
             	#{if session.get("user.email")}
-            		<li>${session.get("user.email")}</li>
+            		<li><a href="@{Profile.index()}">${session.get("user.displayName")}</a></li>
             		<li>
                     	<a href="@{Application.logout()}">Log out</a>
                 	</li>

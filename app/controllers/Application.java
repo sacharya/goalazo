@@ -6,60 +6,11 @@ import models.Post;
 import models.User;
 import play.mvc.*;
 import play.*;
-import play.libs.OpenID.*;
-import play.libs.OpenID;
 
 import play.data.validation.*;
 
-public class Application extends Controller {
-
-	@Before
-	static void addDefaults() {
-	    renderArgs.put("blogTitle", Play.configuration.getProperty("blog.title"));
-	    renderArgs.put("blogBaseline", Play.configuration.getProperty("blog.baseline"));
-	}
+public class Application extends BaseController {
 	
-	@Before(unless={"index", "logout", "login", "authenticate", "show", "listTagged"})
-	static void checkAuthenticated() {
-	    if(!session.contains("user")) {
-	        login();
-	    }
-	}
-	
-	public static void login() {
-	    render();
-	}
-	
-	public static void logout() {
-		render("Application/logout.html");
-	}
-	
-	public static void clearSession() {
-		flash.success("You have successfully logged out.");
-		render();
-	}
-	
-	public static void authenticate(String claimID) { 
-	    if(OpenID.isAuthenticationResponse()) { 
-	        // Retrieve the verified id 
-	        UserInfo user = OpenID.getVerifiedID(); 
-	        if(user == null) { 
-	              flash.put("error", "Oops. Authentication has failed"); 
-	              index(); 
-	        } else { 
-	              session.put("user.id", user.id); 
-	              session.put("user.email", user.extensions.get("email")); 
-	              index(); 
-	        } 
-	    } else { 
-	        // Verify the id 
-	        if(!OpenID.id(claimID).required("email", 
-	"http://axschema.org/contact/email").verify()) { 
-	              flash.put("error", "Oops. Cannot contact google"); 
-	              index(); 
-	        } 
-	    }
-	}    
     public static void index() {
     	List<Post> posts = Post.find(
                 "order by createdDate desc"
@@ -94,8 +45,7 @@ public class Application extends Controller {
     	if(Validation.hasErrors()) {
     		render("Application/create.html");
     	}
-    	String displayName = "crazybob";
-    	User user = new User(displayName);
+    	User user = User.find("byEmail",session.get("user.email")).first();
     	user = user.save();
     	Post post = new Post(user, title, content).save();
     	String[] tagsArray = tags.split(",");
@@ -113,8 +63,7 @@ public class Application extends Controller {
     	if (Validation.hasErrors()) {
             render("Application/show.html", post);
         }
-    	String displayName = "crazybob";
-    	User user = new User(displayName);
+    	User user = User.find("byEmail",session.get("user.email")).first();
     	user = user.save();
         post.addComment(user, content);
         flash.success("Thanks for posting %s", user.displayName);

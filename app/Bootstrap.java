@@ -11,7 +11,7 @@ public class Bootstrap extends Job {
     public void doJob() {
         // Check if the database is empty
        // if(User.count() == 0) {
-        	new User("bob@gmail.com", "Passw0rd", "Bob", "Crazy", "crazybob").save();
+        	new User("bob@gmail.com", "Passw0rd", "Bob Crazy", "crazybob").save();
         	User bob = User.find("byEmail", "bob@gmail.com").first();
         	System.out.println("User: " + bob);
         	
