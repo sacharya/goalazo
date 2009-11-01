@@ -21,6 +21,9 @@ public class User extends Model {
     
     public Date lastVisitedDate;
     
+    public User(String displayName) {
+    	this.displayName = displayName;
+    }
     
     public User(String email, String password, String firstName, String lastName, String displayName) {
         this.email = email;
@@ -32,6 +35,10 @@ public class User extends Model {
     
     public static User connect(String email, String password) {
     	return find("byEmailAndPassword", email, password).first();
+    }
+    
+    public String toString() {
+        return this.displayName;
     }
  
 }

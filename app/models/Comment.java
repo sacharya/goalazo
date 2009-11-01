@@ -23,5 +23,9 @@ public class Comment extends Model {
         this.content = content;
         this.createdDate = new Date();
     }
+    
+    public String toString() {
+        return this.content;
+    }
  
 }

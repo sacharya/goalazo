@@ -5,8 +5,19 @@
 # Home page
 GET     /                                       Application.index
 
+GET     /posts/{id}                             Application.show
+
+POST    /posts/{postId}/comments                Application.postComment
+
+GET     /posts/tags/{tag}                    	Application.listTagged
+
+GET     /auth/                    		Authenticate.index
+
 # Map static resources from the /app/public folder to the /public path
 GET     /public/                                staticDir:public
 
 # Catch all
 *       /{controller}/{action}                  {controller}.{action}
+
+# Import CRUD routes
+*      /admin              						module:crud

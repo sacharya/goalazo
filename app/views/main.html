@@ -16,13 +16,21 @@
                 Goalazo.com
             </div>
             <ul id="tools">
-                <li>
-                    <a href="#">Log in to write something</a>
-                </li>
+            	#{if session.get("user.email")}
+            		<li>${session.get("user.email")}</li>
+            		<li>
+                    	<a href="@{Application.logout()}">Log out</a>
+                	</li>
+           		#{/if}
+				#{else}
+                	<li>
+                    	<a href="@{Application.login()}">Sign in</a>
+                	</li>
+				#{/else}
             </ul>
             <div id="title">
                 <span class="about">About this blog</span>
-                <h1><a href="#">${blogTitle}</a></h1>
+                <h1><a href="@{Application.index()}">${blogTitle}</a></h1>
                 <h2>${blogBaseline}</h2>
             </div>
         </div>
