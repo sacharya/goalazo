@@ -1,0 +1,99 @@
+#{extends 'main.html' /}
+#{set title:'Home' /}
+
+#{if flash.error}
+<h1>${flash.error}</h1>
+#{/if}
+#{if flash.success}
+	<p class="success">${flash.success}</p>
+#{/if}
+
+<div class="profile">
+	<h3>Registered User - Profile</h3>
+ 
+#{form @Profile.save()}
+	
+		#{ifErrors}
+        	<p class="error">
+            	All fields are required!
+        	</p>
+    	#{/ifErrors}
+   	
+    <table class="user-details">
+    	<tr>
+        	<td style="width:120px;">
+            	Display Name
+            </td>
+            <td style="width:230px;">
+            	<b><input type="text" name="displayName" id="displayName" value="${user?.displayName}"/></b>
+            </td>
+        </tr>
+        
+        <tr>
+        	<td style="width:120px;">
+            	RealName
+            </td>
+            <td style="width:230px;">
+            	<b><input type="text" name="realName" id="realName" value="${user?.realName}"/></b>
+            </td>
+        </tr>
+        
+        <tr>
+              <td>
+                 Website
+              </td>
+              <td>
+                 <div style="width: 230px; white-space: nowrap; overflow: hidden;">
+                 <input type="text" name="website" id="website" value="${user?.website}"/>
+                 </div>                                
+              </td>
+          </tr>                      
+        
+        <tr>
+        	<td style="width:120px;">
+            	Email
+            </td>
+            <td style="width:230px;">
+            	<b>${user?.email}</b>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                 Member for
+            </td>
+            <td>
+                 <span title='2009-08-15 00:53:18Z'>${user?.createdDate?.format('dd MMM yy')}</span>
+            </td>
+         </tr>
+         <tr>
+         	<td>
+            	Seen
+            </td>
+            <td>
+            	<span title="2009-11-01 19:51:38Z" class="relativetime">${user?.lastVisitedDate?.format('dd MMM yy')}</span>
+            </td>
+          </tr>
+                        
+          <tr>
+              <td>
+          	    OpenID
+              </td>
+              <td>
+              	<div id="OpenIDUrl" style="width: 230px; color: #999; white-space: nowrap; overflow: hidden;">
+                                    www.google.com/accounts/o8/id?id=aitoawk658f3_w9c7eelocnjskgl_556f5vyzwo</div>
+                            </td>
+          </tr>
+          
+          <tr>
+          	<td>
+          	</td>
+          	<td>
+          		<p>
+        			<input type="submit" value="Submit your post" />
+    	  		</p>
+    	  	</td>
+    	  </tr>
+                  
+	</table>
+	#{/form}
+</div>

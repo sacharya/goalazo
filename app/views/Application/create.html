@@ -1,0 +1,34 @@
+#{extends 'main.html' /}
+#{set title:'Home' /}
+
+<div class="post">
+<h3>Create a new post</h3>
+ 
+	#{form @Application.savePost()}
+	
+		#{ifErrors}
+        	<p class="error">
+            	All fields are required!
+        	</p>
+    	#{/ifErrors}
+    	
+    	<p>
+        	<label for="title">Title: </label>
+        	<input type="text" name="title" id="posttitle" value="${params?.title}" size="65" />
+    	</p>
+    	
+    	<p>
+        	<label for="content">Content: </label>
+        	<textarea name="content" id="content">${params?.content}</textarea>
+    	</p>
+    	
+    	<p>
+        	<label for="tags">Tags: </label>
+        	<input type="text" name="tags" id="tags" value="${params?.tags}" size="65" />
+    	</p>
+    	
+    	<p>
+        	<input type="submit" value="Submit your post" />
+    	</p>
+#{/form}
+</div>

@@ -1,0 +1,56 @@
+#{extends 'main.html' /}
+#{set title:'Posts tagged with ' + tag /}
+ 
+*{********* Title ********* }*
+ 
+#{if posts.size() > 1}
+   <h3>There are ${posts.size()} posts tagged '${tag}'</h3>  
+#{/if} 
+#{elseif posts}
+    <h3>There is 1 post tagged '${tag}'</h3>  
+#{/elseif}
+#{else}
+    <h3>No post tagged '${tag}'</h3>
+#{/else}
+ 
+*{********* Posts list *********}*
+ 
+#{if posts.size() > 0}
+	<div class="older-posts">    
+    	<h3>Recent Posts<span class="from"></span></h3>
+        <a href="@{Application.create()}">Create a new post</a>
+        #{list items:posts, as:'post'}
+        	<div class="post">
+            	<h2 class="post-title">
+                	<a href="@{Application.show(post.id)}">${post.title}</a>
+                </h2>
+                <div class="post-metadata">
+                	<span class="post-author">
+                    	by ${post.user.displayName}
+                    </span>
+                    <span class="post-date">
+                    	${post.createdDate.format('dd MMM yy')}
+                    </span>
+                    <div class="post-comments">
+                    	${post.comments.size() ?: 'no'} 
+                        comment${post.comments.size().pluralize()}
+                        #{if post.comments}
+                        	- latest by ${post.comments[0].user.displayName}
+                        #{/if}
+                    </div>
+                    
+                    #{list items:post.tags, as:'tag'}
+    					<a href="@{Application.listTagged(tag.name)}">${tag}</a>${tag_isLast ? '' : ', '}
+					#{/list}
+                </div>
+            </div>
+        #{/list}
+    </div>
+         
+#{/if}
+ 
+#{else}
+    <div class="empty">
+        There is currently nothing to read here.
+    </div>
+#{/else}

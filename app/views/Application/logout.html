@@ -1,0 +1,12 @@
+#{extends 'main.html' /}
+#{set title:'Home' /}
+ 
+<h1>Logout</h1>
+
+You're a registered user.
+
+You can log in or out at any time using the OpenID you've already associated with your account.
+
+<form action="@{Application.clearSession()}" method="POST">
+	<input type="submit" value="Logout..." />
+</form>

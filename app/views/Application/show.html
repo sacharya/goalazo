@@ -1,0 +1,75 @@
+#{extends 'main.html' /}
+#{set title:'Home' /}
+
+<div class="post">
+#{if flash.success}
+    <p class="success">${flash.success}</p>
+#{/if}
+	<h2 class="post-title">
+	   	<a href="@{Application.show(post.id)}">${post.title}</a>
+    </h2>
+    <div class="post-metadata">
+    	<span class="post-author">
+        	by ${post.user.displayName}
+        </span>
+        <span class="post-date">
+        	${post.createdDate.format('dd MMM yy')}
+        </span>
+        <div class="post-comments">
+        	${post.comments.size() ?: 'no'} 
+            comment${post.comments.size().pluralize()}
+            #{if post.comments}
+            	- latest by ${post.comments[0].user.displayName}
+            #{/if}
+         </div>
+         
+         <div class="post-content">
+            ${post.content.nl2br()}
+        </div>
+        
+        #{list items:post.comments, as:'comment'}
+            <div class="comment">
+                <div class="comment-metadata">
+                    <span class="comment-author">by ${comment.user.displayName},</span>
+                    <span class="comment-date">
+                        ${comment.createdDate.format('dd MMM yy')}
+                    </span>
+                </div>
+                <div class="comment-content">
+                    <div class="about">Detail: </div>
+                    ${comment.content.escape().nl2br()}
+                </div>
+            </div>
+        #{/list}
+        
+        #{if post.tags}
+    		<span class="post-tags">
+        		- Tagged 
+        		#{list items:post.tags, as:'tag'}
+            		<a href="@{Application.listTagged(tag.name)}">${tag}</a>${tag_isLast ? '' : ', '}
+        		#{/list}
+    		</span>
+    	#{/if}
+
+     </div>
+     
+     <h3>Post a comment</h3>
+ 
+	#{form @Application.postComment(post.id)}
+	
+		#{ifErrors}
+        	<p class="error">
+            	All fields are required!
+        	</p>
+    	#{/ifErrors}
+    	
+    	<p>
+        	<label for="content">Your message: </label>
+        	<textarea name="content" id="content">${params?.content}</textarea>
+    	</p>
+    	<p>
+        	<input type="submit" value="Submit your comment" />
+    	</p>
+#{/form}
+</div>
+
