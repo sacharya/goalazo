@@ -9,39 +9,119 @@
         <link rel="shortcut icon" type="image/png" 
             href="@{'/public/images/favicon.png'}" />
     </head>
-    <body>
-        
-        <div id="header">
-            <div id="logo">
-                Goalazo.com
-            </div>
-            <ul id="tools">
-            	#{if session.get("user.email")}
-            		<li><a href="@{Profile.index()}">${session.get("user.displayName")}</a></li>
-            		<li>
-                    	<a href="@{Application.logout()}">Log out</a>
-                	</li>
-           		#{/if}
-				#{else}
-                	<li>
-                    	<a href="@{Application.login()}">Sign in</a>
-                	</li>
-				#{/else}
-            </ul>
-            <div id="title">
-                <span class="about">About this blog</span>
-                <h1><a href="@{Application.index()}">${blogTitle}</a></h1>
-                <h2>${blogBaseline}</h2>
-            </div>
-        </div>
-        
+    <body id="jobs">
         <div id="main">
-            #{doLayout /} 
+        
+        	<!--<div id="main-nav">
+        		<dl>
+	        		<h2><img src="images/headings/about.gif" width="54" height="14" alt="About" /></h2>
+					<h2><img src="images/headings/contact.gif" width="98" height="14" alt="Contact Us" /></h2>
+					<dt id="about"><a href="#">About</a></dt>
+					<dt id="services"><a href="#">Services</a></dt>
+					<dt id="portfolio"><a href="#">Portfolio</a></dt>
+					<dt id="contact"><a href="#">Contact Us</a></dt>
+				</dl>
+        	</div>-->
+	
+        <div id="header">
+					#{if session.get("user.email")}
+            			<li>
+            				<a href="@{Profile.index()}">${session.get("user.displayName")}</a></li>
+            			<li>
+                    	<a href="@{Application.logout()}">Log out</a>
+           			#{/if}
+					#{else}
+                		<li>
+                    		<a href="@{Application.login()}">Sign in</a>
+                		</li>
+					#{/else}	
+
+                <h1 id="title">
+                	<a href="">Goalazo.com</a>
+                </h1>
+
+				<p>
+            		<a href="http://siliconsentier.org">Silicon Sentier</a>
+, association d'entreprises technologiques Web, Open source et Mobilité à Paris et en Île-de-France, souhaite par ses actions et sa vision contribuer au développement de l’innovation, de la croissance et de l’emploi. Silicon Sentier est également l'association qui a conçu et porte
+<a href="http://lacantine.org/">La Cantine</a>
+et le
+<a href="http://quartiernumerique.org">Quartier Numérique</a>
+. 
+					<a href="http://jobs.siliconsentier.org/all.xml" id="rss">Les nouveaux jobs en RSS</a>
+				</p>
+
+   
+               <!-- <span class="about">About this blog</span>
+                <h1><a href="@{Application.index()}">${blogTitle}</a></h1>
+                <h1>${blogBaseline}</h1>-->
+
         </div>
         
-        <p id="footer">
-            Goalazo.com - All about the beautiful game of Soccer! 
-        </p>
+        <div id="search">
+			<form accept-charset="utf-8" method="get" action="/search">
+				<label for="keywords">Trouver le job qui vous convient</label>
+				<input id="keywords" type="text" value="" name="by"/>
+				<input id="searchButton" type="submit" value="Rechercher"/>
+			</form>
+		</div>
+
+		<div id="tabs">
+			<ul>
+				<li>
+					<a class="" href="">Development</a>
+				</li>
+				<li>
+					<a class="" href="">Design</a>
+				</li>
+				<li>
+					<a class="selected" href="">Business</a>
+				</li>
+			</ul>
+			<br style="clear: both;"/>
+		</div>
         
+        <div id="content">
+            #{doLayout /}
+            <div id="tags">
+				<h2>Filtrer par tags</h2>
+				<ul>
+					<li>
+						<a href="http://jobs.siliconsentier.org/business/PhP">PhP</a>
+					</li>
+					<li>
+						<a href="http://jobs.siliconsentier.org/business/ajax">Ajax</a>
+					</li>
+					<li>
+						<a href="http://jobs.siliconsentier.org/business/flash">Flash</a>
+					</li>
+					<li>
+						<a href="http://jobs.siliconsentier.org/business/stage">Stage</a>
+					</li>
+					<li>
+						<a href="http://jobs.siliconsentier.org/business/CDI">CDI</a>
+					</li>
+					<li>
+						<a href="http://jobs.siliconsentier.org/business/java">Java</a>
+					</li>
+					<li>
+						<a href="http://jobs.siliconsentier.org/business/web">Web</a>
+					</li>
+				</ul>
+			</div> 
+        </div>
+        
+        <div id="footer">
+            <div id="altnav">
+				<a href="#">About</a> - 
+				<a href="#">Services</a> - 
+				<a href="#">Portfolio</a> - 
+				<a href="#">Contact Us</a> - 
+				<a href="#">Terms of Trade</a>
+			</div>
+			Copyright &copy; Goalazo.com
+
+			<a href="http://www.goalazo.com/">Goalazo.com - All about the beautiful game of Soccer! </a>
+        </div>
+        </div>
     </body>
 </html>

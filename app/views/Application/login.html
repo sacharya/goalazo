@@ -8,7 +8,7 @@
 #{/if}
 <h1>Login</h1>
  
-<form action="@{Application.authenticate()}" method="POST">
+<form action="@{BaseController.authenticate()}" method="POST">
     <label for="claimID">What's your OpenID?</label>
     <input type="text" name="claimID" id="claimID" value="https://www.google.com/accounts/o8/id"  size="65"/>
     <input type="submit" value="login..." />

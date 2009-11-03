@@ -22,7 +22,7 @@ public class BaseController extends Controller {
 	
 	public static void login() {
 		Logger.info("Entering Login");
-	    render();
+	    render("Application/login.html");
 	}
 	
 	public static void logout() {

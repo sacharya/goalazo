@@ -3,6 +3,10 @@
 # ~~~~
 
 # Home page
+
+GET     /login                                  BaseController.login
+GET     /logout                                  BaseController.logout
+
 GET     /                                       Application.index
 
 GET     /posts/{id}                             Application.show
