@@ -1,46 +1,106 @@
 #{extends 'main.html' /}
 #{set title:'Home' /}
 
+<div id="content">
+	<div id="mainbar">
+		<div id="subheader">
+			<h2>Recent Questions</h2>
+			<div id="tabs">
+				<a class="youarehere" title="questions that have been asked, answered, or updated recently" href="/?tab=active">active</a>
+				<a title="questions with an active bounty" href="/?tab=featured">
+				<span class="bounty-indicator-tab">92</span>
+				featured
+				</a>
+				<a title="questions with the most activity and interest over the last few days" href="/?tab=hot">hot</a>
+				<a title="questions with the most activity and interest this week" href="/?tab=week">week</a>
+				<a title="questions with the most activity and interest this month" href="/?tab=month">month</a>
+			</div>
+		</div>
+		
+		#{if posts?.size() > 0}
+			#{list items:posts, as:'post'}
+				<div id="question-summary-1671362" class="question-summary narrow">
+					<div style="cursor: pointer;" onclick="javascript:window.location.href='@{Application.show(post.id)}'">
+						<div class="votes">
+							<div class="mini-counts">0</div>
+							<div>votes</div>
+						</div>
+						<div class="status answered">
+								<div class="mini-counts">${post.comments.size() ?: '0'}</div> 
+								<div>comment${post.comments.size().pluralize()}</div>
+							</div>
+							<div class="views">
+								<div class="mini-counts">11</div>
+								<div>views</div>
+							</div>
+						</div>
+					<div class="summary">
+						<h3>
+							<a class="question-hyperlink" title="${post.title}" href="@{Application.show(post.id)}">${post.title}</a>
+						</h3>
+						<div class="tags t-python t-import t-relative-path">
+							#{list items:post.tags, as:'tag'}
+    							<a class="post-tag" rel="tag" title="show questions tagged 'python'" href="@{Application.listTagged(tag.name)}">${tag}</a>${tag_isLast ? '' : ', '}	
+							#{/list}
+						</div>
+				
+						<div class="started">
+							<span class="relativetime" title="${post.createdDate.format('dd MMM yy')}">26s ago</span>
+								<a href="@{Profile.index(post.user.id)}">${post.user.displayName}</a>
+								#{if post.comments}
+                        			- latest by ${post.comments[0].user.displayName}
+                        		#{/if}
+                     	</div>
+						<span class="reputation-score" title="reputation score"><!--45.9k--></span>
+					</div>
+				</div>
+			#{/list}
+		#{/if}
+		
+		
+	</div>
+	
+	<div id="sidebar">
+		<div class="module" style="padding-left: 4px; padding-right: 4px;">
+			<h4 style="padding-left: 4px;">Recent Tags</h4>
+				<div id="recent-tags">
+					<a class="post-tag pop2" rel="tag" title="show questions tagged 'java'" href="/questions/tagged/java">java</a>
+					<a class="post-tag" rel="tag" title="show questions tagged 'eclipse'" href="/questions/tagged/eclipse">eclipse</a>
+					<a class="post-tag pop2" rel="tag" title="show questions tagged 'javascript'" href="/questions/tagged/javascript">javascript</a>
+					<a class="post-tag" rel="tag" title="show questions tagged 'data-structures'" href="/questions/tagged/data-structures">data-structures</a>
+					<a class="post-tag pop2" rel="tag" title="show questions tagged 'c#'" href="/questions/tagged/c%23">c#</a>
+					<a class="post-tag pop2" rel="tag" title="show questions tagged 'python'" href="/questions/tagged/python">python</a>
+					<a class="post-tag" rel="tag" title="show questions tagged 'google'" href="/questions/tagged/google">google</a>
+					<a class="post-tag" rel="tag" title="show questions tagged 'bash'" href="/questions/tagged/bash">bash</a>
+					<a class="post-tag" rel="tag" title="show questions tagged 'django'" href="/questions/tagged/django">django</a>
+					<a class="post-tag pop2" rel="tag" title="show questions tagged 'ruby-on-rails'" href="/questions/tagged/ruby-on-rails">ruby-on-rails</a>
+				</div>
+				<p style="text-align: right;">
+					<a href="/tags">all tags È</a>
+				</p>
+		</div>
+		
+		<div id="recent-badges" class="module" style="overflow: hidden;">
+			<h4>Recent Badges</h4>
+				<table>
+					<tbody>
+						<tr>	
+							<td>
+								<a class="badge" title="silver badge: Asked a question with 2,500 views" href="/badges/27/notable-question">
+								<span class="badge2"></span>
+								 Notable Question
+								</a>
+								<a href="/users/32775/luiscubal">luiscubal</a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<p style="text-align: right;">
+					<a href="/badges">all badges È</a>
+				</p>
+		</div>
+	</div>
+</div>		
 #{if flash.success}
 	<p class="success">${flash.success}</p>
 #{/if}
-				
-#{if posts?.size() > 0}
-	<div class="older-posts">    
-    	<h3>Recent Posts<span class="from"></span></h3>
-        <a href="@{Application.create()}">Create a new post</a>
-        #{list items:posts, as:'post'}
-        	<div class="post">
-            	<h2 class="post-title">
-                	<a href="@{Application.show(post.id)}">${post.title}</a>
-                </h2>
-                <div class="post-metadata">
-                	<span class="post-author">
-                    	by <a href="@{Profile.index(post.user.id)}">${post.user.displayName}</a>
-                    </span>
-                    <span class="post-date">
-                    	${post.createdDate.format('dd MMM yy')}
-                    </span>
-                    <div class="post-comments">
-                    	${post.comments.size() ?: 'no'} 
-                        comment${post.comments.size().pluralize()}
-                        #{if post.comments}
-                        	- latest by ${post.comments[0].user.displayName}
-                        #{/if}
-                    </div>
-                    
-                    #{list items:post.tags, as:'tag'}
-    					<a href="@{Application.listTagged(tag.name)}">${tag}</a>${tag_isLast ? '' : ', '}
-					#{/list}
-                </div>
-            </div>
-        #{/list}
-    </div>
-         
-#{/if}
- 
-#{else}
-    <div class="empty">
-        There is currently nothing to read here.
-    </div>
-#{/else}

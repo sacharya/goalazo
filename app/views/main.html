@@ -9,119 +9,125 @@
         <link rel="shortcut icon" type="image/png" 
             href="@{'/public/images/favicon.png'}" />
     </head>
-    <body id="jobs">
-        <div id="main">
+    <body>
+    	<div id="notify-container">  </div>
+        <div class="container">
         
-        	<!--<div id="main-nav">
-        		<dl>
-	        		<h2><img src="images/headings/about.gif" width="54" height="14" alt="About" /></h2>
-					<h2><img src="images/headings/contact.gif" width="98" height="14" alt="Contact Us" /></h2>
-					<dt id="about"><a href="#">About</a></dt>
-					<dt id="services"><a href="#">Services</a></dt>
-					<dt id="portfolio"><a href="#">Portfolio</a></dt>
-					<dt id="contact"><a href="#">Contact Us</a></dt>
-				</dl>
-        	</div>-->
-	
-        <div id="header">
-					#{if session.get("user.email")}
-            			<li>
-            				<a href="@{Profile.index()}">${session.get("user.displayName")}</a></li>
-            			<li>
-                    	<a href="@{Application.logout()}">Log out</a>
-           			#{/if}
-					#{else}
-                		<li>
+			<div id="header">
+				<div id="topbar">
+					<div id="hlinks">
+						#{if session.get("user.email")}
+							<a href="@{Profile.index()}">${session.get("user.displayName")}</a>
+                    		<a href="@{Application.logout()}">Log out</a>
+           				#{/if}
+						#{else}
                     		<a href="@{Application.login()}">Sign in</a>
-                		</li>
-					#{/else}	
-
-                <h1 id="title">
-                	<a href="">Goalazo.com</a>
-                </h1>
-
-				<p>
-            		<a href="http://siliconsentier.org">Silicon Sentier</a>
-, association d'entreprises technologiques Web, Open source et Mobilité à Paris et en Île-de-France, souhaite par ses actions et sa vision contribuer au développement de l’innovation, de la croissance et de l’emploi. Silicon Sentier est également l'association qui a conçu et porte
-<a href="http://lacantine.org/">La Cantine</a>
-et le
-<a href="http://quartiernumerique.org">Quartier Numérique</a>
-. 
-					<a href="http://jobs.siliconsentier.org/all.xml" id="rss">Les nouveaux jobs en RSS</a>
-				</p>
-
-   
-               <!-- <span class="about">About this blog</span>
-                <h1><a href="@{Application.index()}">${blogTitle}</a></h1>
-                <h1>${blogBaseline}</h1>-->
-
-        </div>
-        
-        <div id="search">
-			<form accept-charset="utf-8" method="get" action="/search">
-				<label for="keywords">Trouver le job qui vous convient</label>
-				<input id="keywords" type="text" value="" name="by"/>
-				<input id="searchButton" type="submit" value="Rechercher"/>
-			</form>
+						#{/else}	
+						<span class="link-separator">|</span>
+						<a href="/about">about</a>
+						<span class="link-separator">|</span>
+						<a href="/faq">faq</a>
+					</div>
+					<div id="hsearch">
+						<form id="search" method="get" action="/search">
+							<div>
+								<input class="textbox" type="text" value="search" size="28" maxlength="80" onfocus="if (this.value=='search') this.value = ''" tabindex="1" name="q"/>
+							</div>
+						</form>
+					</div>
+				</div>
+				<br style="clear: both;"/>
+				<div id="hlogo">
+					<a href="/">
+						<img width="250" height="61" alt="Goalazo.com" src="/public/images/goalazo.png"/>
+					</a>
+				</div>
+			<div id="hmenus">
+				<div class="nav">
+					<ul>
+						<li>
+							<a href="/questions">Questions</a>
+						</li>
+						<li>
+							<a href="/tags">Tags</a>
+						</li>
+						<li>
+							<a href="/users">Users</a>
+						</li>
+						<li>
+							<a href="/badges">Badges</a>
+						</li>
+						<li>
+							<a href="/unanswered">Unanswered</a>
+						</li>
+					</ul>
+			</div>
+			<div class="nav" style="float: right;">
+				<ul>
+					<li style="margin-right: 0px;">
+						<a href="@{Application.create()}">Ask a Question</a>
+					</li>
+				</ul>
+			</div>
 		</div>
-
-		<div id="tabs">
-			<ul>
-				<li>
-					<a class="" href="">Development</a>
-				</li>
-				<li>
-					<a class="" href="">Design</a>
-				</li>
-				<li>
-					<a class="selected" href="">Business</a>
-				</li>
-			</ul>
-			<br style="clear: both;"/>
-		</div>
+	</div>
         
         <div id="content">
             #{doLayout /}
-            <div id="tags">
-				<h2>Filtrer par tags</h2>
-				<ul>
-					<li>
-						<a href="http://jobs.siliconsentier.org/business/PhP">PhP</a>
-					</li>
-					<li>
-						<a href="http://jobs.siliconsentier.org/business/ajax">Ajax</a>
-					</li>
-					<li>
-						<a href="http://jobs.siliconsentier.org/business/flash">Flash</a>
-					</li>
-					<li>
-						<a href="http://jobs.siliconsentier.org/business/stage">Stage</a>
-					</li>
-					<li>
-						<a href="http://jobs.siliconsentier.org/business/CDI">CDI</a>
-					</li>
-					<li>
-						<a href="http://jobs.siliconsentier.org/business/java">Java</a>
-					</li>
-					<li>
-						<a href="http://jobs.siliconsentier.org/business/web">Web</a>
-					</li>
-				</ul>
-			</div> 
         </div>
-        
+</div>        
         <div id="footer">
-            <div id="altnav">
-				<a href="#">About</a> - 
-				<a href="#">Services</a> - 
-				<a href="#">Portfolio</a> - 
-				<a href="#">Contact Us</a> - 
-				<a href="#">Terms of Trade</a>
-			</div>
-			Copyright &copy; Goalazo.com
-
-			<a href="http://www.goalazo.com/">Goalazo.com - All about the beautiful game of Soccer! </a>
-        </div>
-        </div>
+<div class="container">
+<div id="footer-menu">
+<a href="/about">about</a>
+|
+<a href="/faq">faq</a>
+|
+<a href="http://blog.stackoverflow.com/">blog</a>
+|
+<a href="http://itc.conversationsnetwork.org/series/stackoverflow.html">podcast</a>
+|
+<a href="/privacy">privacy policy</a>
+|
+<a href="http://ads.stackoverflow.com/a.aspx?ZoneID=0&BannerID=323&AdvertiserID=5&CampaignID=194&Task=Click&SiteID=1">advertising info</a>
+|
+<b>
+<a href="mailto:team@stackoverflow.com">contact us</a>
+</b>
+|
+<b>
+<a href="http://meta.stackoverflow.com">feedback always welcome</a>
+</b>
+<div id="footer-sites">
+<span style="color: rgb(254, 122, 21); font-size: 140%;"></span>
+<a href="http://stackoverflow.com">stackoverflow.com</a>
+<span style="color: rgb(254, 122, 21); font-size: 140%;"></span>
+<a href="http://careers.stackoverflow.com">careers</a>
+<span style="color: rgb(232, 39, 44); font-size: 140%;"></span>
+<a href="http://serverfault.com">serverfault.com</a>
+<span style="color: rgb(0, 175, 239); font-size: 140%;"></span>
+<a href="http://superuser.com">superuser.com</a>
+<span style="color: rgb(150, 150, 150); font-size: 140%;"></span>
+<a href="http://meta.stackoverflow.com">meta</a>
+<a href="http://www.howtogeek.com">howtogeek.com</a>
+<a href="http://doctype.com">doctype.com</a>
+</div>
+</div>
+<div id="footer-flair">
+<img width="168" height="67" usemap="#footermap" alt="cc-wiki, PEAK Internet" src="http://sstatic.net/so/Img/footer-cc-wiki-peak-internet.png"/>
+<map name="footermap">
+<area coords="0,0,50,67" title="Creative Commons: Attribution - Share Alike" alt="cc-wiki" href="http://creativecommons.org/licenses/by-sa/2.5/"/>
+<area coords="62,0,168,67" title="powered by PEAK Internet dedicated server hosting" alt="PEAK Internet" href="http://www.peakinternet.com/business/hosting/colocation-dedicated#"/>
+</map>
+<div id="svnrev">svn revision: 5212</div>
+</div>
+<div id="copyright">
+site design and logo is © 2009 stackoverflow.com llc; user contributed content licensed under
+<a href="http://creativecommons.org/licenses/by-sa/2.5/">cc-wiki</a>
+with
+<a href="http://blog.stackoverflow.com/2009/06/attribution-required/">attribution required</a>
+</div>
+</div>
+</div>
     </body>
 </html>
