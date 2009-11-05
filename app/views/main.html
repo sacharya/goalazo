@@ -12,122 +12,153 @@
     <body>
     	<div id="notify-container">  </div>
         <div class="container">
-        
-			<div id="header">
-				<div id="topbar">
-					<div id="hlinks">
-						#{if session.get("user.email")}
-							<a href="@{Profile.index()}">${session.get("user.displayName")}</a>
-                    		<a href="@{Application.logout()}">Log out</a>
-           				#{/if}
-						#{else}
-                    		<a href="@{Application.login()}">Sign in</a>
-						#{/else}	
-						<span class="link-separator">|</span>
-						<a href="/about">about</a>
-						<span class="link-separator">|</span>
-						<a href="/faq">faq</a>
+        	<!--<div id="big-top-area">
+				<div class="content">
+					<div class="left">
+						<h1 class="title-what">What is Design Snack?</h1>
+						<h2>In simple terms, Design Snack is a socially-powered web design showcase.</h2>
+						<p>We've taken the CSS/XHTML and Flash web design gallery and broke the mold, providing the users themselves with the power to create what is essentially a great web portfolio and the ultimate inspiration tool.</p>
 					</div>
-					<div id="hsearch">
-						<form id="search" method="get" action="/search">
-							<div>
-								<input class="textbox" type="text" value="search" size="28" maxlength="80" onfocus="if (this.value=='search') this.value = ''" tabindex="1" name="q"/>
-							</div>
+					<div class="right">
+						<small>Need to know more?</small>
+						<h2 class="screencast">
+							<a id="screencast" class="ds-videolightbox">
+							</a>
+						</h2>
+						<small>Ready to jump in?</small>
+						<h2 class="register">
+							<a id="registration-1" class="ds-lightbox">
+							<cufon class="cufon cufon-canvas" style="width: 58px; height: 35px;">
+								<canvas width="74" height="35" style="width: 74px; height: 35px; top: 1px; left: 0px;"/>
+								<cufontext>Get </cufontext>
+							</cufon>
+							<cufon class="cufon cufon-canvas" style="width: 112px; height: 35px;">
+								<canvas width="128" height="35" style="width: 128px; height: 35px; top: 1px; left: 0px;"/>
+								<cufontext>Started </cufontext>
+							</cufon>
+							<cufon class="cufon cufon-canvas" style="width: 65px; height: 35px;">
+								<canvas width="75" height="35" style="width: 75px; height: 35px; top: 1px; left: 0px;"/>
+								<cufontext>Here</cufontext>
+							</cufon>
+							</a>
+						</h2>
+						<small>Already a Member?</small>
+						<h2 class="signin">
+							<a id="signin-1" class="ds-lightbox" rel="page=/">
+								<cufon class="cufon cufon-canvas" style="width: 58px; height: 35px;">
+									<canvas width="74" height="35" style="width: 74px; height: 35px; top: 1px; left: 0px;"/>
+									<cufontext>Get </cufontext>
+								</cufon>
+								<cufon class="cufon cufon-canvas" style="width: 105px; height: 35px;">
+									<canvas width="121" height="35" style="width: 121px; height: 35px; top: 1px; left: 0px;"/>
+									<cufontext>Signed </cufontext>
+								</cufon>
+								<cufon class="cufon cufon-canvas" style="width: 28px; height: 35px;">
+									<canvas width="36" height="35" style="width: 36px; height: 35px; top: 1px; left: 0px;"/>
+									<cufontext>In</cufontext>
+								</cufon>
+							</a>
+						</h2>
+					</div>
+					<div class="clear"/>
+				</div>
+			</div> -->
+        	
+        	<div class="sub-container">
+        		<div id="tabArea">
+					<div class="ajax-tabs static-tabs leftSide">
+						<ul>
+							<li>
+								<a id="top_designs" class="selected">
+									<span>Hot</span>
+								</a>
+							</li>
+							<li>
+								<a id="random_designs">
+									<span>Recent</span>
+								</a>
+							</li>
+							<li>
+								<a id="random_designs">
+									<span>Ask</span>
+								</a>
+							</li>
+						</ul>
+					</div>
+					<div class="tabs sidebar-tabs rightSide">
+						<ul>
+							<li>
+								<a class="selected" href="#sponsors">Sponsors</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+				
+				<div id="mainContent" class="clear">
+					<div id="sidebar leftSide">
+            			#{doLayout /}
+            		</div>
+            		<div id="sidebar rightSide">
+            			
+            		</div>
+        		</div>
+        		
+				<div id="header">
+					<h2>
+						<a href="/">Design Snack - XHTML, CSS, Flash, Web Design & Web Development Inspiration Gallery Showcase</a>
+					</h2>
+					<div id="navigation">
+						<ul>
+							<li><a href="/"><span>Home</span></a></li>
+							<li class="active"><span>About</span></li>
+							<li><a href="/blog/"><span>Blog</span></a></li>							
+							<li><a href="@{Application.create()}"><span>Ask a Question</span></a></li>
+						</ul>
+					</div>
+					<div id="eyebrow">
+						<span class="cap">
+							#{if session.get("user.email")}
+								<a href="@{Profile.index()}">${session.get("user.displayName")}</a>
+	                    		<a href="@{Application.logout()}">Log out</a>
+	           				#{/if}
+							#{else}
+	                    		<a href="@{Application.login()}">Sign in</a>
+							#{/else}
+							<a href="/about">about</a>
+							<a href="/faq">faq</a>	
+						</span>
+					</div>
+					<div id="search">
+						<form class="search" method="get" action="/search/">
+							<p>
+								<input class="textbox" type="text" onblur="if (this.value == '') {this.value = 'Search ...';}" onfocus="if (this.value == 'Search ...') {this.value = '';}" value="Search ..." name="q"/>
+								<input class="submit" type="submit" value="Go"/>
+							</p>
 						</form>
+						<div class="clear"/>
 					</div>
 				</div>
-				<br style="clear: both;"/>
-				<div id="hlogo">
-					<a href="/">
-						<img width="250" height="61" alt="Goalazo.com" src="/public/images/goalazo.png"/>
-					</a>
-				</div>
-			<div id="hmenus">
-				<div class="nav">
-					<ul>
-						<li>
-							<a href="/questions">Questions</a>
-						</li>
-						<li>
-							<a href="/tags">Tags</a>
-						</li>
-						<li>
-							<a href="/users">Users</a>
-						</li>
-						<li>
-							<a href="/badges">Badges</a>
-						</li>
-						<li>
-							<a href="/unanswered">Unanswered</a>
-						</li>
-					</ul>
-			</div>
-			<div class="nav" style="float: right;">
-				<ul>
-					<li style="margin-right: 0px;">
-						<a href="@{Application.create()}">Ask a Question</a>
-					</li>
-				</ul>
 			</div>
 		</div>
-	</div>
-        
-        <div id="content">
-            #{doLayout /}
-        </div>
-</div>        
-        <div id="footer">
-<div class="container">
-<div id="footer-menu">
-<a href="/about">about</a>
-|
-<a href="/faq">faq</a>
-|
-<a href="http://blog.stackoverflow.com/">blog</a>
-|
-<a href="http://itc.conversationsnetwork.org/series/stackoverflow.html">podcast</a>
-|
-<a href="/privacy">privacy policy</a>
-|
-<a href="http://ads.stackoverflow.com/a.aspx?ZoneID=0&BannerID=323&AdvertiserID=5&CampaignID=194&Task=Click&SiteID=1">advertising info</a>
-|
-<b>
-<a href="mailto:team@stackoverflow.com">contact us</a>
-</b>
-|
-<b>
-<a href="http://meta.stackoverflow.com">feedback always welcome</a>
-</b>
-<div id="footer-sites">
-<span style="color: rgb(254, 122, 21); font-size: 140%;"></span>
-<a href="http://stackoverflow.com">stackoverflow.com</a>
-<span style="color: rgb(254, 122, 21); font-size: 140%;"></span>
-<a href="http://careers.stackoverflow.com">careers</a>
-<span style="color: rgb(232, 39, 44); font-size: 140%;"></span>
-<a href="http://serverfault.com">serverfault.com</a>
-<span style="color: rgb(0, 175, 239); font-size: 140%;"></span>
-<a href="http://superuser.com">superuser.com</a>
-<span style="color: rgb(150, 150, 150); font-size: 140%;"></span>
-<a href="http://meta.stackoverflow.com">meta</a>
-<a href="http://www.howtogeek.com">howtogeek.com</a>
-<a href="http://doctype.com">doctype.com</a>
-</div>
-</div>
-<div id="footer-flair">
-<img width="168" height="67" usemap="#footermap" alt="cc-wiki, PEAK Internet" src="http://sstatic.net/so/Img/footer-cc-wiki-peak-internet.png"/>
-<map name="footermap">
-<area coords="0,0,50,67" title="Creative Commons: Attribution - Share Alike" alt="cc-wiki" href="http://creativecommons.org/licenses/by-sa/2.5/"/>
-<area coords="62,0,168,67" title="powered by PEAK Internet dedicated server hosting" alt="PEAK Internet" href="http://www.peakinternet.com/business/hosting/colocation-dedicated#"/>
-</map>
-<div id="svnrev">svn revision: 5212</div>
-</div>
-<div id="copyright">
-site design and logo is © 2009 stackoverflow.com llc; user contributed content licensed under
-<a href="http://creativecommons.org/licenses/by-sa/2.5/">cc-wiki</a>
-with
-<a href="http://blog.stackoverflow.com/2009/06/attribution-required/">attribution required</a>
-</div>
-</div>
-</div>
+</div>		
+		        
+		<div id="footer">
+			<div class="footer-wrap">
+				<div class="column twitter"></div>
+				<div class="column"></div>
+				<div class="column last"></div>
+				<div class="clear"/>
+				<div class="copyright">
+					<p>
+						Copyright © 2009
+						<a title="C&G Marquees" href="/">C&G Marquees</a>
+						. All Rights Reserved.
+						<a onclick="window.open(this.href); return false" title="Website design by 247 Creative, Chichester" href="http://www.247creative.co.uk/">Website Design</a>
+						by
+						<a onclick="window.open(this.href); return false" title="Website design by 247 Creative, Chichester" href="http://www.247creative.co.uk/">247 Creative</a>
+					</p>
+				</div>
+			</div>
+		</div>
     </body>
 </html>
