@@ -6,10 +6,26 @@ import models.Post;
 import models.User;
 import play.mvc.*;
 import play.*;
+import play.libs.OpenID.*;
+import play.libs.OpenID;
 
 import play.data.validation.*;
 
-public class Application extends BaseController {
+public class Application extends Controller {
+	
+	@Before
+	static void addDefaults() {
+	    renderArgs.put("blogTitle", Play.configuration.getProperty("blog.title"));
+	    renderArgs.put("blogBaseline", Play.configuration.getProperty("blog.baseline"));
+	}
+	
+	@Before(unless={"index", "logout", "clearSession", "login", "authenticate", "show", "listTagged"})
+	static void checkAuthenticated() {
+	    if(!session.contains("user.id")) {
+	        Auth.login();
+	    }
+	}
+	
 	
     public static void index() {
     	List<Post> posts = Post.find(

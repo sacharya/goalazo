@@ -12,7 +12,12 @@
 	#{if user.email == session.get("user.email")}
     	<a href="@{Profile.update()}">Edit</a>
   	#{/if}
-    <table class="user-details">
+    <table class="user-details"
+		<tr>
+			<td>
+    			<img width="128" height="128" alt="" src="http://www.gravatar.com/avatar/${hash}?s=128&amp;d=identicon&amp;r=PG"/>
+    		</td>
+    	</tr>
     	<tr>
         	<td style="width:120px;">
             	Display Name

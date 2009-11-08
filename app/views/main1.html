@@ -1,0 +1,111 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+ 
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head>
+        <title>#{get 'title' /}</title>		
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <link rel="stylesheet" type="text/css" media="screen" 
+            href="@{'/public/stylesheets/main.css'}" />
+        <link rel="shortcut icon" type="image/png" 
+            href="@{'/public/images/favicon.png'}" />
+    </head>
+    <body>
+    	<div id="notify-container">  </div>
+        <div id="container">
+        	
+        		<div id="header">
+        			<div id="eyebrow">
+							#{if session.get("user.email")}
+								<a href="@{Profile.index()}">${session.get("user.displayName")}</a>
+	                    		<a href="@{Auth.logout()}">Log out</a>
+	           				#{/if}
+							#{else}
+	                    		<a href="@{Auth.login()}">Sign in</a>
+							#{/else}
+							<a href="/about">about</a>
+							<a href="/faq">faq</a>	
+					</div>
+					<h2>
+						<a href="/">Design Snack - XHTML, CSS, Flash, Web Design & Web Development Inspiration Gallery Showcase</a>
+					</h2>
+					<div id="navigation">
+						<ul>
+							<li><a href="/"><span>Home</span></a></li>
+							<li class="active"><span>About</span></li>
+							<li><a href="/blog/"><span>Blog</span></a></li>							
+							<li><a href="@{Application.create()}"><span>Ask a Question</span></a></li>
+						</ul>
+					</div>
+					<div id="search">
+						<form class="search" method="get" action="@{Application.listTagged()}">
+							<p>
+								<input class="textbox" type="text" onblur="if (this.value == '') {this.value = 'Search ...';}" onfocus="if (this.value == 'Search ...') {this.value = '';}" value="Search ..." name="tag"/>
+								<input class="submit" type="submit" value="Go"/>
+							</p>
+						</form>
+						<div class="clear"/>
+					</div>
+				</div>
+        	
+        	
+        	<div id="content">
+        		<div id="tabArea">
+					<div class="ajax-tabs static-tabs leftSide">
+						<ul>
+							<li>
+								<a id="top_designs" class="selected">
+									<span>Hot</span>
+								</a>
+							</li>
+							<li>
+								<a id="random_designs">
+									<span>Recent</span>
+								</a>
+							</li>
+							<li>
+								<a id="random_designs">
+									<span>Ask</span>
+								</a>
+							</li>
+						</ul>
+					</div>
+					<div class="tabs sidebar-tabs rightSide">
+						<ul>
+							<li>
+								<a class="selected" href="#sponsors">Sponsors</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+				
+				<div id="mainContent" class="clear">
+					<div id="sidebar leftSide">
+            			#{doLayout /}
+            		</div>
+            		<div id="sidebar rightSide">
+            			
+            		</div>
+        		</div>
+        	</div>		
+		</div>	
+		        
+		<div id="footer">
+			<div class="footer-wrap">
+				<div class="column twitter"></div>
+				<div class="column"></div>
+				<div class="column last"></div>
+				<div class="clear"/>
+				<div class="copyright">
+					<p>
+						Copyright © 2009
+						<a title="C&G Marquees" href="/">C&G Marquees</a>
+						. All Rights Reserved.
+						<a onclick="window.open(this.href); return false" title="Website design by 247 Creative, Chichester" href="http://www.247creative.co.uk/">Website Design</a>
+						by
+						<a onclick="window.open(this.href); return false" title="Website design by 247 Creative, Chichester" href="http://www.247creative.co.uk/">247 Creative</a>
+					</p>
+				</div>
+			</div>
+		</div> 
+    </body>
+</html>

@@ -1,25 +1,13 @@
 package controllers;
+
+import models.Post;
+import models.User;
 import play.mvc.*;
 import play.*;
 import play.libs.OpenID.*;
 import play.libs.OpenID;
-import models.User;
 
-public class BaseController extends Controller {
-	
-	@Before
-	static void addDefaults() {
-	    renderArgs.put("blogTitle", Play.configuration.getProperty("blog.title"));
-	    renderArgs.put("blogBaseline", Play.configuration.getProperty("blog.baseline"));
-	}
-	
-	@Before(unless={"index", "logout", "clearSession", "login", "authenticate", "show", "listTagged"})
-	static void checkAuthenticated() {
-	    if(!session.contains("user.id")) {
-	        login();
-	    }
-	}
-	
+public class Auth extends Controller {
 	public static void login() {
 		Logger.info("Entering Login");
 	    render("Application/login.html");

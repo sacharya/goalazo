@@ -1,61 +1,58 @@
 #{extends 'main.html' /}
 #{set title:'Home' /}
+	#{if flash.success}
+		<p class="success">${flash.success}</p>
+	#{/if}
 
 	#{if posts?.size() > 0}
 		#{list items:posts, as:'post'}
-			<div class="votes">
-				<div class="mini-counts">0</div>
-				<div>votes</div>
-			</div>
-			<div class="status answered">
-				<div class="mini-counts">${post.comments.size() ?: '0'}</div> 
-				<div>comment${post.comments.size().pluralize()}</div>
-			</div>
-			<div class="views">
-				<div class="mini-counts">11</div>
-				<div>views</div>
-			</div>
-				
-			<div class="summary">
-				<h3>
-					<a class="question-hyperlink" title="${post.title}" href="@{Application.show(post.id)}">${post.title}</a>
-				</h3>
-				<div class="tags t-python t-import t-relative-path">
-					#{list items:post.tags, as:'tag'}
-	    				<a class="post-tag" rel="tag" title="show questions tagged 'python'" href="@{Application.listTagged(tag.name)}">${tag}</a>${tag_isLast ? '' : ', '}	
-					#{/list}
+			<div class="post">
+				<div class="postleft">
+					<div class="votes">
+						<strong>0</strong>
+						<br/>
+						votes
+					</div>
+					<div class="answers">
+						<strong>${post.comments.size() ?: '0'}</strong>
+						comment${post.comments.size().pluralize()}
+					</div>
 				</div>
-			</div>		
-			
-			<div class="started">
-				<span class="relativetime" title="${post.createdDate.format('dd MMM yy')}">26s ago</span>
-				<a href="@{Profile.index(post.user.id)}">${post.user.displayName}</a>
-				#{if post.comments}
-	            	- latest by ${post.comments[0].user.displayName}
-        		#{/if}
-	        </div>
-			<span class="reputation-score" title="reputation score"><!--45.9k--></span>
+				<div class="postmain">
+					<div class="avatar">
+						<a href="@{Profile.index(post.user.id)}">
+							<img border="0" src="http://woorkup.com/wp-content/images/authors/1.jpg"/>
+						</a>
+						<a href="@{Profile.index(post.user.id)}">${post.user.displayName}</a>
+						<br/>
+					</div>
+					<h3 class="post-title">
+						<a rel="bookmark" href="@{Application.show(post.id)}">${post.title}</a>
+					</h3>
 
+					<div class="tags">
+						<strong>Tags:</strong>
+						#{list items:post.tags, as:'tag'}
+	    					<a class="tag" href="@{Application.listTagged(tag.name)}"><span>${tag}</span></a>
+						#{/list}
+						<strong>Posted: ${post.createdDate.format('dd MMM yy')}</strong>
+					</div>
+					<div class="clear">  </div>
+				</div>
+
+			</div>
 		#{/list}
-	#{/if}
-	
-	<div class="item-pagination">
-		<ul>
-			<li><span>Ç</span></li>
-			<li><span>Ü</span></li>
-			<li><span>1</span></li>
-			<li><a rel="page=2" href="#item-top">2</a></li>
-			<li><a rel="page=3" href="#item-top">3</a></li>
-			<li><a rel="page=2" href="#item-top">4</a></li>
-			<li><a rel="page=3" href="#item-top">5</a></li>
-			<li><a rel="page=2" href="#item-top">6</a></li>
-			<li><a rel="page=3" href="#item-top">7</a></li>
-			<li><a rel="page=2" href="#item-top">8</a></li>
-			<li><a rel="page=3" href="#item-top">9</a></li>
-		</ul>
-	</div>
+	#{/if}	
 
-<div class="clear"/>		
-#{if flash.success}
-	<p class="success">${flash.success}</p>
-#{/if}
+		<span class="pages">Page 1 of 8</span>
+		<span class="current">1</span>
+		<a class="page" title="2" href="http://woorkup.com/page/2/">2</a>
+		<a class="page" title="3" href="http://woorkup.com/page/3/">3</a>
+		<a class="page" title="4" href="http://woorkup.com/page/4/">4</a>
+		<a class="page" title="5" href="http://woorkup.com/page/5/">5</a>
+		<a href="http://woorkup.com/page/2/">È</a>
+		<span class="extend">...</span>
+		<a class="last" title="Last È" href="http://woorkup.com/page/8/">Last È</a>	
+
+	
+	
