@@ -10,125 +10,126 @@
             href="@{'/public/images/favicon.png'}" />
     </head>
     <body>
-    	<div id="notify-container">  </div>
-        <div id="container">
-        	<div id="header-wrap">
-			<div id="header">
-				<div class="logo">
-					<a href="/">
-						<img src="public/images/goalazo.png" width="187" height="29" alt="Stage &amp; Screen" /> 
-					</a>
-				</div>
-				<div id="eyebrow">
-					<ul>
-						<li>
-							#{if session.get("user.email")}
-								<a href="@{Profile.index()}">${session.get("user.displayName")}</a>
+	    <div id="top">
+	    	<div id="util-bar">
+				<div id="util-container">
+					<div id="search">
+						<form action="" id="searchableForm" method="get" name="searchableForm">
+							<input id="search-text" name="q" value="Search" type="text"> <input src="overview_files/button_search.gif" id="search-button" type="image" value="Go">
+							<div class="clearfix"></div>
+						</form>
+					</div>
+					<div id="account">			
+						<span class="userName">
+							 #{if session.get("user.email")}
+								<a class="link-login" href="@{Profile.index()}">${session.get("user.displayName")}</a>
 								<span class="link-separator">|</span>
-								<a href="@{Auth.logout()}">Log out</a>
+								<a class="link-login" href="@{Profile.index()}">My Profile</a>
+								<span class="link-separator">|</span>
+								<a class="link-login" href="@{Auth.logout()}">Log out</a>
 							#{/if}
 							#{else}
-								<a href="@{Auth.login()}">Sign in</a> OR
-								<a href="/">Be a member</a>
-							#{/else}
-							<span class="link-separator">|</span>
-						</li>
-						<li>
-							#{if session.get("user.email")}
-								<a href="@{Profile.index()}">Settings</a>
+								<a class="link-login" href="@{Auth.login()}">Sign in</a> 
 								<span class="link-separator">|</span>
-							#{/if}
+								<a class="link-login" href="/">Be a member</a>
+							#{/else}
+						</span>
+					</div>
+					<div class="clearfix"></div>
+				</div>
+			</div>
+			
+			<div id="logo-container">
+					<div id="logo">
+						<a href=""><span>Goalazo Network Home</span></a>
+					</div>
+			</div>
+			
+			<div id="header">
+				<div id="nav">
+					<ul class="clearfix">
+						<li class="primary first"><a href="">Home</a></li>
+						
+						<li class="primary selected"><a href="">Discussions</a>
+							
+								<ul>
+									<li><a href="">Hot</a></li>
+									<li><a href="">Recent</a></li>
+									<li><a href="">Old</a></li>
+								</ul>
 							
 						</li>
-						<li>
-							
-						</li>
+									
+						<li class="primary"><a href="">Users</a></li>				
+						<li class="primary"><a href="">Tags</a></li>
+						<li class="primary"><a href="">Blog</a></li>
+						<li class="primary"><a href="">Feedback</a></li>
+						<li class="primary"><a href="">Videos</a></li>
+						<li class="primary"><a href="">Images</a></li>
+						<li class="primary last"><a href="">RSS</a></li>
+						<li class="primary referral"><a href="">Submit a new Post</a></li>
 					</ul>
 				</div>
-			</div>	
-			
-			<div id="menu">
-				<ul>
-					<li>
-						<a href="/">Home</a>
-					</li>
-					<li>
-						<a href="">Discussions</a>
-					</li>
-					<li>
-						<a href="">Users</a>
-					</li>
-					<li>
-						<a href="">Tags</a>
-					</li>
-					<li>
-						<a href="">Blog</a>
-					</li>
-					<li>
-						<a href="">Feedback</a>
-					</li>
-					<li>
-						<a href="">RSS</a>
-					</li>
-					<li>
-						<a href="@{Application.create()}">Create a new Post</a>
-					</li>
-				</ul>
 			</div>
 		</div>
-		</div>	
-			
-		<div id="main">
-			<div id="tab">
-				<ul>
-					<li>
-						<a href="/">
-							Hot
-						</a>
-					</li>
-					<li>
-						<a href="">
-							Recent
-						</a>
-					</li>
-					<li>
-						<a href="">
-							Month
-						</a>
-					</li>
-					<li>
-						<a href="" class="selected">
-							Year
-						</a>
+	
+		<div id="container">
+		
+			<div id="content" class="partner-content">
+				
+				<h1>Discussions <span>/ Hot</span></h1>
+				
+				<div class="myrs-rule"><hr></div>
+				
+				<div class="twoColMasterModule">
+					<div class="contentCol">
+						#{doLayout /}
+					</div>
+		
+		            <div class="sidebarCol">
+					    <div class="featurette">
+						    <h3>Interesting Tags</h3>
+						    <p><a href="">Barcelona</a> <a href="">Best Player</a> <a href="">Italy Sucks</a><a href=""> American football<a><a href=""> Overrated Messi</a><a href=""> Teveza's scar</a><a href=""> Best Goals</a>
+							</p>
+						    <p><strong><a href="" class="">more...</a></strong></p>
+						</div>
+		
+						<div class="myrs-rule"><hr></div>
+		
+						<div class="featurette">
+							<h3>Top Users</h3>
+							<p><a href="">Joe</a> <a href="">Harry</a> <a href="">Sachin</a><a href=""> Riquelme<a><a href="">  Messi</a><a href=""> Tevez</a><a href=""> Maradona</a>
+							</p>
+						    <p><strong><a href="" class="">more...</a></strong></p>
+						</div>
+		            </div>
+		            
+		            <div class="clearfix"></div>
+		
+				</div>
+				
+			</div>
+		</div>
+
+		<div id="footer">
+			<div id="footer-container">
+				<p>© 2009 Goalazo.com. All rights reserved.</p>
+				<ul class="footer-nav">
+					<li><a href="">Home</a></li>
+					<li><a href="">Contact Us</a></li>
+					<li><a href="" target="_blank">Copyright Notices</a></li>
+					<li><a href="" target="_blank">Privacy Statement</a></li>
+					<li><a href="">Terms and Conditions</a></li>
+					<li class="admin-link">
+						
+							<strong><a href="">Admin Dashboard</a></strong>
+						
 					</li>
 				</ul>
+				<div class="clearfix"></div>
 			</div>
-			<div id="content">
-				#{doLayout /}
-			</div>
-			<div id="sidebar">			
-			</div>
-		</div>	
-				
-		<div id="footer">
-			<div class="footer-wrap">
-				<div class="copyright">
-					<p>
-					<strong>Goalazo.com</strong>
-					<a href="/">About Us</a>
-					|
-					<a href="mailto:info@goalazo.com">Contact Us</a>
-					|
-					</p>
-					<p>
-					<strong>Subscriptions</strong>
-					<a href="http://feeds2.feedburner.com/goalazo">RSS Feed</a>
-					|
-					<a href="http://www.twitter.com/goalazo">Follow on Twitter</a>
-					</p>
-					<p style="color: rgb(85, 85, 85);">© 2009 Goalazo.com. All Rights Reserved.</p>
-				</div>
-			</div>
-		</div> 		
+		</div>
+
+
     </body>
 </html>
