@@ -4,6 +4,7 @@ import java.util.List;
 
 import models.Post;
 import models.User;
+import models.Tag;
 import play.mvc.*;
 import play.*;
 import play.libs.OpenID.*;
@@ -89,6 +90,12 @@ public class Application extends Controller {
     public static void listTagged(String tag) {
         List<Post> posts = Post.findTaggedWith(tag);
         render(tag, posts);
+    }
+    
+    public static void tags() {
+    	List<Tag> tags = Tag.find().from(0).fetch(10);
+    	System.out.println("Tags: " + tags.size());
+        render("Application/listTagged.html", tags);
     }
 
 }

@@ -43,14 +43,15 @@
 					<div id="logo">
 						<a href=""><span>Goalazo Network Home</span></a>
 					</div>
+					
 			</div>
 			
 			<div id="header">
 				<div id="nav">
 					<ul class="clearfix">
-						<li class="primary first"><a href="">Home</a></li>
+						<li class="primary first"><a href="/">Home</a></li>
 						
-						<li class="primary selected"><a href="">Discussions</a>
+						<li class="primary selected"><a href="/">Discussions</a>
 							
 								<ul>
 									<li><a href="">Hot</a></li>
@@ -60,14 +61,14 @@
 							
 						</li>
 									
-						<li class="primary"><a href="">Users</a></li>				
-						<li class="primary"><a href="">Tags</a></li>
-						<li class="primary"><a href="">Blog</a></li>
-						<li class="primary"><a href="">Feedback</a></li>
-						<li class="primary"><a href="">Videos</a></li>
-						<li class="primary"><a href="">Images</a></li>
-						<li class="primary last"><a href="">RSS</a></li>
-						<li class="primary referral"><a href="">Submit a new Post</a></li>
+						<li class="primary"><a href="/users">Users</a></li>				
+						<li class="primary"><a href="@{Application.tags()}">Tags</a></li>
+						<li class="primary"><a href="/">Blog</a></li>
+						<li class="primary"><a href="/">Feedback</a></li>
+						<li class="primary"><a href="/">Videos</a></li>
+						<li class="primary"><a href="/">Images</a></li>
+						<li class="primary last"><a href="/">RSS</a></li>
+						<li class="primary referral"><a href="@{Application.create()}">Submit a new Post</a></li>
 					</ul>
 				</div>
 			</div>
@@ -77,7 +78,7 @@
 		
 			<div id="content" class="partner-content">
 				
-				<h1>Discussions <span>/ Hot</span></h1>
+				<h1><!--Discussions <span>/ Hot--></span></h1>
 				
 				<div class="myrs-rule"><hr></div>
 				
@@ -87,6 +88,16 @@
 					</div>
 		
 		            <div class="sidebarCol">
+		            	<div class="featurette">
+						    <h3>Search</h3>
+						    <form method="get" action="/searches">
+								<input id="term" class="sidebar-text" type="text" value="Search..." onclick="this.value = """ name="term"/>
+								<input id="type_id" type="hidden" name="type_id"/>
+								<input id="type" type="hidden" value="forums" name="type"/>
+								<button class="small-search" type="submit">Search</button>
+							</form>
+						</div>
+						
 					    <div class="featurette">
 						    <h3>Interesting Tags</h3>
 						    <p><a href="">Barcelona</a> <a href="">Best Player</a> <a href="">Italy Sucks</a><a href=""> American football<a><a href=""> Overrated Messi</a><a href=""> Teveza's scar</a><a href=""> Best Goals</a>
@@ -120,11 +131,11 @@
 					<li><a href="" target="_blank">Copyright Notices</a></li>
 					<li><a href="" target="_blank">Privacy Statement</a></li>
 					<li><a href="">Terms and Conditions</a></li>
-					<li class="admin-link">
+					<!--<li class="admin-link">
 						
 							<strong><a href="">Admin Dashboard</a></strong>
 						
-					</li>
+					</li>-->
 				</ul>
 				<div class="clearfix"></div>
 			</div>

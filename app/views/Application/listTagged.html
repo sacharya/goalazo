@@ -3,7 +3,7 @@
  
 *{********* Title ********* }*
  
-#{if posts.size() > 1}
+#{if posts?.size() > 1}
    <h3>There are ${posts.size()} posts tagged '${tag}'</h3>  
 #{/if} 
 #{elseif posts}
@@ -15,7 +15,7 @@
  
 *{********* Posts list *********}*
  
-#{if posts.size() > 0}
+#{if posts?.size() > 0}
 	<div class="older-posts">    
     	<h3>Recent Posts<span class="from"></span></h3>
         <a href="@{Application.create()}">Create a new post</a>

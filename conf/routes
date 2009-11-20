@@ -5,7 +5,9 @@
 # Home page
 
 GET     /login                                  BaseController.login
-GET     /logout                                  BaseController.logout
+GET     /logout                                 BaseController.logout
+
+GET     /users                                  Users.index
 
 GET     /                                       Application.index
 
