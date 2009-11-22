@@ -4,25 +4,18 @@
     <p class="success">${flash.success}</p>
 #{/if}
 
-<div class="post-full">
+<div class="postfull">
 	<div class="postleft">
 		<div class="vote">	
-			<img class="vote-up" width="40" height="25" title="This question is useful and clear (click again to undo)" alt="vote up" src="/theme/img/vote-arrow-up.png?highlight=ff7700&foreground=555555&background=ffffff"/>
+			<img class="vote-up" width="40" height="25" title="This question is useful and clear (click again to undo)" alt="up" src="/theme/img/vote-arrow-up.png?highlight=ff7700&foreground=555555&background=ffffff"/>
 			<span class="vote-count-post"> 1 </span>
-			<img class="vote-down" width="40" height="25" title="This question is unclear or not useful (click again to undo)" alt="vote down" src="/theme/img/vote-arrow-down.png?highlight=ff7700&foreground=555555&background=ffffff"/>
+			<img class="vote-down" width="40" height="25" title="This question is unclear or not useful (click again to undo)" alt="down" src="/theme/img/vote-arrow-down.png?highlight=ff7700&foreground=555555&background=ffffff"/>
 		</div>
 	</div>
 
 	<div class="postmain">
 		<h3 class="post-title">
 			<a href="@{Application.show(post.id)}">${post.title}</a>
-			     	<div class="avatar">
-			<a href="@{Profile.index(post.user.id)}">
-			<img border="0" src="http://woorkup.com/wp-content/images/authors/1.jpg"/>
-			</a>
-			<a href="@{Profile.index(post.user.id)}">${post.user.displayName}</a>
-			<br/>
-		</div>
 		</h3>
       
         <div class="post-content">
@@ -38,6 +31,14 @@
         		<strong>Posted: ${post.createdDate.format('dd MMM yy')}</strong>
     		</div>
     	#{/if}
+    	
+    	<div class="author">
+			<a href="@{Profile.index(post.user.id)}">
+			<img border="0" src="http://woorkup.com/wp-content/images/authors/1.jpg"/>
+			</a>
+			<a href="@{Profile.index(post.user.id)}">${post.user.displayName}</a>
+			<br/>
+		</div>
      	
 
 		
@@ -46,38 +47,39 @@
 </div>
 	
  #{list items:post.comments, as:'comment'}	
-	<div class="post-full">
+	<div class="postfull">
 		<div class="postleft">
 			<div class="votes">	
-				<img class="vote-up" width="40" height="25" title="This question is useful and clear (click again to undo)" alt="vote up" src="/theme/img/vote-arrow-up.png?highlight=ff7700&foreground=555555&background=ffffff"/>
+				<img class="vote-up" width="40" height="25" title="This question is useful and clear (click again to undo)" alt="up" src="/theme/img/vote-arrow-up.png?highlight=ff7700&foreground=555555&background=ffffff"/>
 				<span class="vote-count-post"> 1 </span>
-				<img class="vote-down" width="40" height="25" title="This question is unclear or not useful (click again to undo)" alt="vote down" src="/theme/img/vote-arrow-down.png?highlight=ff7700&foreground=555555&background=ffffff"/>
+				<img class="vote-down" width="40" height="25" title="This question is unclear or not useful (click again to undo)" alt="down" src="/theme/img/vote-arrow-down.png?highlight=ff7700&foreground=555555&background=ffffff"/>
 			</div>
 		</div>
 	
 		<div class="postmain">
-			<div class="avatar">
-				<a href="@{Profile.index(post.user.id)}">
-				<img border="0" src="http://woorkup.com/wp-content/images/authors/1.jpg"/>
-				</a>
-				<a href="@{Profile.index(comment.user.id)}">${comment.user.displayName}</a>
-				<br/>
-			</div>
 	      
 	        <div class="post-content">
-	            ${comment.content.escape().nl2br()}
+	            ${comment.content}
 	        </div>
 	    	
 	    	<div class="tags">
         		<strong>Posted: ${post.createdDate.format('dd MMM yy')}</strong>
     		</div>
+    		
+    		<div class="author">
+				<a href="@{Profile.index(comment.user.id)}">
+				<img border="0" src="http://woorkup.com/wp-content/images/authors/1.jpg"/>
+				</a>
+				<a href="@{Profile.index(comment.user.id)}">${comment.user.displayName}</a>
+				<br/>
+			</div>
 	     	<div class="clear"> </div>
 	     </div>
 	</div>
 #{/list}
 
 <div class="post-form">
-	<h1>Create a new post</h1>
+	<h1>Comment</h1>
  	
 	#{form @Application.postComment(post.id)}
 	
@@ -88,11 +90,10 @@
     	#{/ifErrors}
     
         <p>
-        	<label for="content">Your message: </label>
         	<textarea name="content" id="content" rows="15" cols="75">${params?.content}</textarea>
     	</p>
     	<p>
-        	<input type="submit" value="Submit your comment" />
+        	<input type="submit" value="Submit" />
     	</p>
     	
 	#{/form}

@@ -171,7 +171,7 @@ label {
 }
 
 #container {
-	width: 980px;
+	width: 995px;
 	margin-left: auto;
 	margin-right: auto;
 	padding-top: 5px;
@@ -202,7 +202,7 @@ label {
 }
 #logo {
 /*	float: left;*/
-	width: 980px;
+	width: 995px;
 	margin-left: auto;
 	margin-right: auto;
 	-moz-border-radius-bottomleft:5px;
@@ -227,7 +227,7 @@ label {
 }
 
 #util-container {
-	width: 980px;
+	width: 995px;
 	margin-left: auto;
 	margin-right: auto;
 }
@@ -316,7 +316,7 @@ label {
 	-webkit-border-radius: 5px;
 	border: 0px solid #BFBFBF;
 	position: relative;
-	width: 965px;
+	width: 980px;
 	margin-left: auto;
 	margin-right: auto;
 }
@@ -587,7 +587,7 @@ label {
 
 .contentCol {
 	float: left;
-	width: 680px;
+	width: 710px;
 }
 
 .sidebarCol {
@@ -616,7 +616,7 @@ label {
 #footer-container {
 	margin-left:auto;
 	margin-right:auto;
-	width:980px;
+	width:995px;
 }
 
 #footer p {
@@ -1145,226 +1145,152 @@ h2.newsletter {
 	clear:both;
 	color:#323232;
 	font-size:13px;
-	padding:10px 4px;
+	height:60px;
+	margin-top:5px;
 }
 	.post .postleft {
-		display:inline;
-		float:left;
-		width:124px;
+		width: 124px;
+		float: left;
+		margin-right:10px;
 	}
-		.post .postleft .votes {
-			background:transparent url(/assets/images/votes.gif) no-repeat scroll left top;
-			display:inline;
-			float:left;
-			font-size:93%;
-			height:50px;
-			margin-right:10px;
-			padding:5px 0;
-			text-align:center;
-			width:55px;
-		}
-		.post .postleft .votes strong {
-			font-size:232.5%;
-		}
-		.post .postleft .answers {
-			background:#BF1131 url(/assets/images/answers.gif) no-repeat scroll left top;
-			color:#FFFFFF;
-			display:inline;
-			float:left;
-			font-size:93%;
-			height:40px;
-			padding:5px 0;
-			text-align:center;
-			width:55px;
-		}
-		.post .postleft .answers strong {
-			font-size:232.5%;
-		}
-		
-	.post .postmain {
-		margin-left:124px;
-		padding-left:11px;
+	.post .postleft .votes {
+		float: left;
+		width: 55px;
+		height: 40px;
+		text-align: center;
+		padding-top:5px;
 	}
-	.post .postmain h3.title {
-		color:#0094D2;
-		font-size:108%;
-		font-weight:bold;
-		padding-bottom:5px;
+	.post .postleft .votes strong {
+		font-size:232.5%;
 	}
-	.post .postmain h3.title a {
-		color:#0094D2;
-	}
-	.post .postmain .avatar, .bar .avatar {
-		display:inline;
-		float:right;
-		font-size:77%;
-		margin-left:20px;
-		width:70px;
-	}
-	.avatar a:link, a:visited {
-		color:#0094D2;
-		font-weight:bold;
-		text-decoration:none;
-	}
-	.post .postmain h3.title {
-		color:#0094D2;
-		font-size:108%;
-		font-weight:bold;
-		padding-bottom:5px;
-	}
-	.post .postmain h3.title a {
-		color:#0094D2;
-	}
- 
-	.post .postmain .tags {
-		color:#7E7E7E;
+	.post .postleft .answers {
+		background-color:#BF1131;
+		color:#ffffff;
 		font-size:93%;
-		margin-top:10px;
+		float:left;
+		width: 55px;
+		text-align: center;
+		padding-top: 5px;
+		height: 40px;
 	}
-	.post .postmain .tags .tag {
-		margin:0 0px;
+	.post .postleft .answers strong {
+		font-size:232.5%;
 	}
-
-
-
-
-
-
+	.postmain {
+		width:690px;	
+	}
+	.postmain .title h3 {
+		font-size:108%;
+		color:#0094D2;
+		padding-bottom:5px;
+		height: 50px;
+	}
+	.postmain .tags {
+		float:left;
+		background-color: #
+		
+	}
+	.postmain .tags a {
+		
+	}
+	.post .tags a span {
+		background-color: #FEFFDF;
+	}
+	.postmain .author {
+		width:70px;
+		float:right;
+	}
+	
+	
 a.tag, a.alttag {
-	background:transparent url(/assets/images/tag-right.gif) no-repeat scroll right top;
-	color:#7E7E7E;
-	cursor:pointer;
-	display:-moz-inline-box;
-	font-weight:normal;
-	white-space:nowrap;
+background:transparent url(/assets/images/tag-right.gif) no-repeat scroll right top;
+color:#7E7E7E;
+cursor:pointer;
+display:-moz-inline-box;
+font-weight:normal;
+white-space:nowrap;
 }
 a.tag span, a.alttag span {
-	background:#FEFFDF url(/assets/images/tag-left.gif) no-repeat scroll left top;
-	color:#7E7E7E;
-	display:inline-block;
-	font-weight:normal;
-	line-height:20px;
-	padding:0 16px;
-	border:1px dotted #CECECE;
-}
+background:#FEFFDF url(/assets/images/tag-left.gif) no-repeat scroll left top;
+color:#7E7E7E;
+display:inline-block;
+font-weight:normal;
+line-height:20px;
+padding:0 16px;
+border:1px dotted #CECECE;
+}	
 
-
-
-
-
-.post-full {
-	border-bottom:1px solid #E7E7E7;
-	clear:both;
+.postfull {
+	border:1px solid #E7E7E7;
 	color:#323232;
 	font-size:13px;
-	padding:10px 4px;
-	margin-bottom: 15px;
-	background: #E7EAF1;
-	-moz-border-radius: 5px;
-	-webkit-border-radius: 5px;
-	border:1px solid #E7EAF1;
+	clear:both;
+	padding-bottom:80px;
+	padding-top:5px;
+	padding-left:5px;
+	padding-right:5px;
+	margin-bottom:20px;
+	-moz-border-radius-bottomleft:5px;
+	-moz-border-radius-bottomright:5px;
+	-moz-border-radius-topleft:5px;
+	-moz-border-radius-topright:5px;
 }
-	.post-full .postleft {
-		display:inline;
-		float:left;
-		text-align:center;
-		width:80px;
+	.postfull .postleft {
+		width: 70px;
+		float: left;
+		margin-right:10px;
+		padding-top:30px;
 	}
-		.post .postleft .votes {
-			background:transparent url(/assets/images/votes.gif) no-repeat scroll left top;
-			display:inline;
-			float:left;
-			font-size:93%;
-			height:50px;
-			margin-right:10px;
-			padding:5px 0;
-			text-align:center;
-			width:55px;
-		}
-		.post-full .postleft .votes strong {
-			font-size:232.5%;
-		}
-		.post-full .postleft .answers {
-			background:#BF1131 url(/assets/images/answers.gif) no-repeat scroll left top;
-			color:#FFFFFF;
-			display:inline;
-			float:left;
-			font-size:93%;
-			height:40px;
-			padding:5px 0;
-			text-align:center;
-			width:55px;
-		}
-		.post-full .postleft .answers strong {
-			font-size:232.5%;
-		}
+	.postfull .postmain {
+		width:620px;
+		padding-left:80px;	
+	}
+	.postfull .postmain .title h3 {
+		font-size:108%;
+		color:#0094D2;
+		padding-bottom:5px;
+	}
+	.postfull .postmain .tags {
+		padding-top:30px;
+		float:left;	
+	}
+	.postfull .postmain .tags a {
 		
-	.post-full .postmain {
-		margin-left:90px;
-		padding-left:11px;
 	}
-	.post-full .postmain h3.title {
-		color:#0094D2;
-		font-size:108%;
-		font-weight:bold;
-		padding-bottom:5px;
+	.postfull .post .tags a span {
+		background-color: #FEFFDF;
 	}
-	.post-full .postmain h3.title a {
-		color:#0094D2;
-	}
-	.post-full .postmain .avatar, .bar .avatar {
-		display:inline;
-		float:right;
-		font-size:77%;
-		margin-left:20px;
+	.postfull .postmain .author {
 		width:70px;
+		float:right;
+		
 	}
-	.avatar a:link, a:visited {
-		color:#0094D2;
-		font-weight:bold;
-		text-decoration:none;
-	}
-	.post-full .postmain h3.title {
-		color:#0094D2;
-		font-size:108%;
-		font-weight:bold;
-		padding-bottom:5px;
-	}
-	.post-full .postmain h3.title a {
-		color:#0094D2;
-	}
- 
-	.post-full .postmain .tags {
-		color:#7E7E7E;
-		font-size:93%;
-		margin-top:10px;
-	}
-	.post-full .postmain .tags .tag {
-		margin:0 0px;
+	.postfull .postmain .post-content {
+		background: #E7EAF1;
+		padding:5px 5px 5px 5px;
+		margin-right:10px;
+		margin-bottom:10px;
 	}
 
-
-
-
-.vote {
-
-}
 
 
 .post-form {
 	margin:0 auto;
-	width:670px;
+	width:700px;
 	padding:10px;
-	
-	border:solid 1px #b7ddf2;
-	background:#ebf4fb;
+	margin-top:#10px;
+	border:solid 1px #CECECE;
+	background:#E7EAF1;
+	-moz-border-radius-bottomleft:5px;
+	-moz-border-radius-bottomright:5px;
+	-moz-border-radius-topleft:5px;
+	-moz-border-radius-topright:5px;
 }
 	.post-form h1 {
 		font-size:14px;
 		font-weight:bold;
 		margin-bottom:8px;
 		padding-bottom:10px;
-		border-bottom:solid 1px #b7ddf2;
 	}
 	.post-form label{
 		display:block;

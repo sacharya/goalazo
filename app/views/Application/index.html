@@ -19,23 +19,18 @@
 					</div>
 				</div>
 				<div class="postmain">
-					<div class="avatar">
-						<a href="@{Profile.index(post.user.id)}">
-							<img border="0" src="http://woorkup.com/wp-content/images/authors/1.jpg"/>
-						</a>
-						<a href="@{Profile.index(post.user.id)}">${post.user.displayName}</a>
-						<br/>
-					</div>
 					<h3 class="post-title">
 						<a rel="bookmark" href="@{Application.show(post.id)}">${post.title}</a>
 					</h3>
-
 					<div class="tags">
 						<strong>Tags:</strong>
 						#{list items:post.tags, as:'tag'}
 	    					<a class="tag" href="@{Application.listTagged(tag.name)}"><span>${tag}</span></a>
 						#{/list}
 						<strong>Posted: ${post.createdDate.format('dd MMM yy')}</strong>
+					</div>
+					<div class="author">
+						<a href="@{Profile.index(post.user.id)}">${post.user.displayName}</a>
 					</div>
 					<div class="clear">  </div>
 				</div>

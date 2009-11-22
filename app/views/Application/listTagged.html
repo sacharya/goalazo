@@ -15,39 +15,40 @@
  
 *{********* Posts list *********}*
  
-#{if posts?.size() > 0}
-	<div class="older-posts">    
-    	<h3>Recent Posts<span class="from"></span></h3>
-        <a href="@{Application.create()}">Create a new post</a>
-        #{list items:posts, as:'post'}
-        	<div class="post">
-            	<h2 class="post-title">
-                	<a href="@{Application.show(post.id)}">${post.title}</a>
-                </h2>
-                <div class="post-metadata">
-                	<span class="post-author">
-                    	by ${post.user.displayName}
-                    </span>
-                    <span class="post-date">
-                    	${post.createdDate.format('dd MMM yy')}
-                    </span>
-                    <div class="post-comments">
-                    	${post.comments.size() ?: 'no'} 
-                        comment${post.comments.size().pluralize()}
-                        #{if post.comments}
-                        	- latest by ${post.comments[0].user.displayName}
-                        #{/if}
-                    </div>
-                    
-                    #{list items:post.tags, as:'tag'}
-    					<a href="@{Application.listTagged(tag.name)}">${tag}</a>${tag_isLast ? '' : ', '}
-					#{/list}
-                </div>
-            </div>
-        #{/list}
-    </div>
-         
-#{/if}
+	#{if posts?.size() > 0}
+		#{list items:posts, as:'post'}
+			<div class="post">
+				<div class="postleft">
+					<div class="votes">
+						<strong>0</strong>
+						<br/>
+						votes
+					</div>
+					<div class="answers">
+						<strong>${post.comments.size() ?: '0'}</strong>
+						comment${post.comments.size().pluralize()}
+					</div>
+				</div>
+				<div class="postmain">
+					<h3 class="post-title">
+						<a rel="bookmark" href="@{Application.show(post.id)}">${post.title}</a>
+					</h3>
+					<div class="tags">
+						<strong>Tags:</strong>
+						#{list items:post.tags, as:'tag'}
+	    					<a class="tag" href="@{Application.listTagged(tag.name)}"><span>${tag}</span></a>
+						#{/list}
+						<strong>Posted: ${post.createdDate.format('dd MMM yy')}</strong>
+					</div>
+					<div class="author">
+						<a href="@{Profile.index(post.user.id)}">${post.user.displayName}</a>
+					</div>
+					<div class="clear">  </div>
+				</div>
+
+			</div>
+		#{/list}
+	#{/if}
  
 #{else}
     <div class="empty">
