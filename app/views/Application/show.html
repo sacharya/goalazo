@@ -6,11 +6,12 @@
 
 <div class="postfull">
 	<div class="postleft">
-		<div class="vote">	
-			<img class="vote-up" width="40" height="25" title="This question is useful and clear (click again to undo)" alt="up" src="/theme/img/vote-arrow-up.png?highlight=ff7700&foreground=555555&background=ffffff"/>
-			<span class="vote-count-post"> 1 </span>
-			<img class="vote-down" width="40" height="25" title="This question is unclear or not useful (click again to undo)" alt="down" src="/theme/img/vote-arrow-down.png?highlight=ff7700&foreground=555555&background=ffffff"/>
-		</div>
+		<div class="votes">	
+				<table>
+					<tr><td class="vote-up"><img src="/public/images/up.png"/></td></tr>
+					<tr><td class="count">1</td></tr>
+					<tr><td class="vote-down"><img src="/public/images/down.png"/></td></tr>
+				</table>	</div>
 	</div>
 
 	<div class="postmain">
@@ -22,15 +23,13 @@
             ${post.content}
         </div>
         
-        #{if post.tags}
-    		<div class="tags">
-        		- Tagged 
-        		#{list items:post.tags, as:'tag'}
-            		<a class="tag" href="@{Application.listTagged(tag.name)}">${tag}</a>${tag_isLast ? '' : ', '}
-        		#{/list}
-        		<strong>Posted: ${post.createdDate.format('dd MMM yy')}</strong>
-    		</div>
-    	#{/if}
+		<div class="tags">
+    		- Tagged 
+    		#{list items:post.tags, as:'tag'}
+        		<a class="tag" href="@{Application.listTagged(tag.name)}"><span>${tag}</span></a>
+    		#{/list}
+    		<strong>Posted: ${post.createdDate.format('dd MMM yy')}</strong>
+		</div>
     	
     	<div class="author">
 			<a href="@{Profile.index(post.user.id)}">
@@ -50,10 +49,13 @@
 	<div class="postfull">
 		<div class="postleft">
 			<div class="votes">	
-				<img class="vote-up" width="40" height="25" title="This question is useful and clear (click again to undo)" alt="up" src="/theme/img/vote-arrow-up.png?highlight=ff7700&foreground=555555&background=ffffff"/>
-				<span class="vote-count-post"> 1 </span>
-				<img class="vote-down" width="40" height="25" title="This question is unclear or not useful (click again to undo)" alt="down" src="/theme/img/vote-arrow-down.png?highlight=ff7700&foreground=555555&background=ffffff"/>
+				<table>
+					<tr><td class="vote-up"><img src="/public/images/up.png"/></td></tr>
+					<tr><td class="count">1</td></tr>
+					<tr><td class="vote-down"><img src="/public/images/down.png"/></td></tr>
+				</table>
 			</div>
+			
 		</div>
 	
 		<div class="postmain">
@@ -78,25 +80,31 @@
 	</div>
 #{/list}
 
-<div class="post-form">
-	<h1>Comment</h1>
- 	
-	#{form @Application.postComment(post.id)}
+#{if session.get("user.email")}
 	
-		#{ifErrors}
-        	<p class="error">
-            	All fields are required!
-        	</p>
-    	#{/ifErrors}
-    
-        <p>
-        	<textarea name="content" id="content" rows="15" cols="75">${params?.content}</textarea>
-    	</p>
-    	<p>
-        	<input type="submit" value="Submit" />
-    	</p>
-    	
-	#{/form}
-	
-</div>
+	<div class="post-form">
+		<h1>Comment</h1>
+	 	
+		#{form @Application.postComment(post.id)}
+		
+			#{ifErrors}
+	        	<p class="error">
+	            	All fields are required!
+	        	</p>
+	    	#{/ifErrors}
+	    
+	        <p>
+	        	<textarea name="content" id="content" rows="15" cols="75">${params?.content}</textarea>
+	    	</p>
+	    	<p>
+	        	<input type="submit" value="Submit" />
+	    	</p>
+	    	
+		#{/form}
+		
+	</div>
 
+#{/if}
+#{else}
+	Want to take part in this discussion?<a class="link-login" href="@{Auth.login()}">Sign in</a> 
+#{/else}

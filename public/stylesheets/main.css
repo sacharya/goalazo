@@ -90,12 +90,12 @@ body {
 }
 
 a {
-	color: #4C92E2;
+	color: #2786C2;
 	text-decoration: none;
 }
 
 a:hover {
-	color: #555;
+	color: #D34C25;
 	text-decoration: none;
 }
 
@@ -191,10 +191,9 @@ label {
 }
 
 #logo a {
-	margin: 10px 0;
+	margin: 1px 0;
 	display: block;
-	width: 514px;
-	height: 49px;
+	height: 65px;
 	background:  url(/public/images/image.jpg) no-repeat top left;
 }
 #logo a span {
@@ -211,8 +210,8 @@ label {
 	-moz-border-radius-topright:5px;
 	border:1px solid #BFBFBF;
 	background-color: #ffffff;
-	margin-top: 5px;
 	margin-bottom: 5px;
+	margin-top: 5px;
 	
 }
 #logo-container {
@@ -620,7 +619,7 @@ label {
 }
 
 #footer p {
-	color: #8EA638;
+	color: #fff;
 	float:left;
 	font-weight: bold;
 }
@@ -628,7 +627,6 @@ label {
 ul.footer-nav {
 	padding: 0;
 	margin: 0;
-	float: right;
 	font-weight: bold;
 }
 
@@ -1119,34 +1117,15 @@ h2.newsletter {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/*Post summary for the list*/
 .post {
-	border-bottom:1px solid #E7E7E7;
+	border:1px solid #E7E7E7;
 	clear:both;
 	color:#323232;
 	font-size:13px;
 	height:60px;
 	margin-top:5px;
+	padding: 4px;
 }
 	.post .postleft {
 		width: 124px;
@@ -1187,14 +1166,14 @@ h2.newsletter {
 	}
 	.postmain .tags {
 		float:left;
-		background-color: #
+		color: #80828C;
 		
 	}
 	.postmain .tags a {
 		
 	}
 	.post .tags a span {
-		background-color: #FEFFDF;
+		background-color: #F6F1DE;
 	}
 	.postmain .author {
 		width:70px;
@@ -1203,23 +1182,30 @@ h2.newsletter {
 	
 	
 a.tag, a.alttag {
-background:transparent url(/assets/images/tag-right.gif) no-repeat scroll right top;
-color:#7E7E7E;
-cursor:pointer;
-display:-moz-inline-box;
-font-weight:normal;
-white-space:nowrap;
+	background:transparent url(/assets/images/tag-right.gif) no-repeat scroll right top;
+	color:#7E7E7E;
+	cursor:pointer;
+	display:-moz-inline-box;
+	font-weight:normal;
+	white-space:nowrap;
 }
 a.tag span, a.alttag span {
-background:#FEFFDF url(/assets/images/tag-left.gif) no-repeat scroll left top;
-color:#7E7E7E;
-display:inline-block;
-font-weight:normal;
-line-height:20px;
-padding:0 16px;
-border:1px dotted #CECECE;
+	background:#F6F1DE url(/assets/images/tag-left.gif) no-repeat scroll left top;
+
+	display:inline-block;
+	font-weight:normal;
+	line-height:20px;
+	padding:2px 4px;
+	border:1px solid #CECECE;
+	
+	-moz-border-radius-bottomleft:2px;
+	-moz-border-radius-bottomright:2px;
+	-moz-border-radius-topleft:2px;
+	-moz-border-radius-topright:2px;
+
 }	
 
+/*Complete post*/
 .postfull {
 	border:1px solid #E7E7E7;
 	color:#323232;
@@ -1240,6 +1226,29 @@ border:1px dotted #CECECE;
 		float: left;
 		margin-right:10px;
 		padding-top:30px;
+	}
+	.postfull .postleft .votes {
+		padding-left:25px;
+	}
+	td.vote-up {
+
+	}
+	td.vote-up a {
+		color: #628316;
+		font-size: 150%;
+		font-weight: bold;
+	}
+	td.vote-down {
+
+	}
+	td.vote-down a {
+		color: yellow;
+		font-size: 150%;
+		font-weight: bold;
+	}
+	td.count {
+		font-size: 150%;
+		font-weight: bold;
 	}
 	.postfull .postmain {
 		width:620px;
@@ -1272,7 +1281,7 @@ border:1px dotted #CECECE;
 		margin-bottom:10px;
 	}
 
-
+/*Add comment form*/
 
 .post-form {
 	margin:0 auto;
@@ -1332,7 +1341,9 @@ border:1px dotted #CECECE;
 		font-weight:bold;
 		border:0; margin:0; padding:0;
 	}
-	
+
+
+/*Users list*/	
 .users-list {
 	background: red;
 }
