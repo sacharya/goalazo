@@ -1,0 +1,35 @@
+#{extends 'main.html' /}
+#{set title:'Home' /}
+
+<h1>Users</h1>
+
+<div class="page-search">
+	Type to find users:
+	<input id="userfilter" class="userfilter" type="text" name="userfilter"/>
+</div>
+	
+<div class="users-list">
+
+	<table>
+		<tbody>
+			<tr>
+			#{list users, as:'user'}
+				<td>
+					<div class="user">
+						<div class="user-action-time"> </div>
+						<div class="user-gravatar32">
+							<a href="@{Profile.index(user.id)}">
+								<img width="32" height="32" alt="" src="http://woorkup.com/wp-content/images/authors/1.jpg"/>
+							</a>
+						</div>
+						<div class="user-details">
+							<a href="@{Profile.index(user.id)}">${user.displayName}</a>
+						</div>
+					</div>
+				</td>
+				#{/list}
+			</tr>
+		</tbody>
+	</table>
+	
+</div>
